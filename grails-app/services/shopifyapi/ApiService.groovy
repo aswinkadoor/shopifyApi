@@ -1,7 +1,5 @@
 package shopifyapi
 
-import grails.converters.JSON
-
 import java.text.SimpleDateFormat
 
 class ApiService {
@@ -49,5 +47,15 @@ class ApiService {
         }
         return  model
 
+    }
+
+    def loadData(params){
+        def result = Api.createCriteria().list {
+            if(params.fromDate){
+                gte("createdAt",  new SimpleDateFormat("yyyy-MM-dd").parse(params.fromDate))
+                lte("createdAt",  new SimpleDateFormat("yyyy-MM-dd").parse(params.toDate))
+            }
+        }
+        return result
     }
 }

@@ -36,15 +36,11 @@ class ApiController {
             }
             connection.disconnect();
             def result = apiService.updateDb(jsonData)
-            println "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``"
-            println result
-            println "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``"
             render result as JSON
-
         }
-        else{
-            def result = Api.createCriteria().list {}
-            render view: 'index', model: [result:result]
+        else if(params.actionType == "loadData"){
+            def result = apiService.loadData(params)
+            render template: 'dataTemplate', model: [result:result]
         }
     }
 

@@ -5,10 +5,9 @@
 // You're free to add application-wide JavaScript to this file, but it's generally better
 // to create separate JavaScript files as needed.
 //
-//= require bootstrap.min.js
 //= require popper.min
 //= require_self
-//= require jqx-all
+//= require bootstrap.min
 //= require datatables.min.js
-
+//= require jqx-all.js
 

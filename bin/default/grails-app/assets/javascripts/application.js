@@ -9,3 +9,5 @@
 //= require bootstrap
 //= require popper.min
 //= require_self
+//= require jqx-all
+//= require jquery

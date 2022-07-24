@@ -1,6 +1,10 @@
 package shopifyapi
 
+import groovy.time.TimeCategory
+
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class ApiService {
 
@@ -53,7 +57,9 @@ class ApiService {
         def result = Api.createCriteria().list {
             if(params.fromDate){
                 gte("createdAt",  new SimpleDateFormat("yyyy-MM-dd").parse(params.fromDate))
-                lte("createdAt",  new SimpleDateFormat("yyyy-MM-dd").parse(params.toDate))
+            }
+            if(params.toDate){
+                lte("createdAt",  (new SimpleDateFormat("yyyy-MM-dd").parse(params.toDate)))
             }
         }
         return result
